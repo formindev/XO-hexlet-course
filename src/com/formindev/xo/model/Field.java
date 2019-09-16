@@ -1,5 +1,7 @@
 package com.formindev.xo.model;
 
+import java.awt.Point;
+
 public class Field {
 
     private final int FIELD_SIZE = 3;
@@ -14,12 +16,32 @@ public class Field {
         return FIELD_SIZE;
     }
 
-    public Figure getFigure(Point point) {
+    public Figure getFigure(Point point) throws InvalidPointException {
+        if (!checkPoint(point)) {
+            throw new InvalidPointException();
+        }
+
         return field[point.x][point.y];
     }
 
-    public void setFigure(Point point, Figure figure) {
+    public void setFigure(Point point, Figure figure) throws InvalidPointException, AlreadyOccupiedException {
+        if (!checkPoint(point)) {
+            throw new InvalidPointException();
+        }
+        
+        if (field[point.x][point.y] != null) {
+            throw new AlreadyOccupiedException();
+        }
+
         field[point.x][point.y] = figure;
+    }
+
+    private boolean checkPoint(final Point point) {
+        return checkCoord(point.x) && checkCoord(point.y);
+    }
+
+    private boolean checkCoord(final int coord) {
+        return coord >= MIN_COORD && coord < MAX_COORD;
     }
 
 }
