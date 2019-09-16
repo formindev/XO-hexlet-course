@@ -22,5 +22,4 @@ public class Field {
         field[point.x][point.y] = figure;
     }
 
-    
 }
