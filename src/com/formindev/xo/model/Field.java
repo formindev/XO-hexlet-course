@@ -21,4 +21,6 @@ public class Field {
     public void setFigure(Point point, Figure figure) {
         field[point.x][point.y] = figure;
     }
+
+    
 }
