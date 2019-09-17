@@ -1,7 +1,5 @@
 package com.formindev.xo.model;
 
-import org.graalvm.compiler.virtual.phases.ea.PartialEscapeBlockState.Final;
-
 public class Player {
 
     private final String name;
@@ -14,10 +12,12 @@ public class Player {
     }
 
     public String getName() {
+
         return name;
     }
 
     public Figure getFigure() {
+
         return figure;
     }    
 
