@@ -1,5 +1,8 @@
 package com.formindev.xo.model;
 
+import com.formindev.xo.model.exceptions.AlreadyOccupiedException;
+import com.formindev.xo.model.exceptions.InvalidPointException;
+
 import java.awt.Point;
 
 public class Field {
@@ -13,6 +16,7 @@ public class Field {
     private final Figure[][] field = new Figure[FIELD_SIZE][FIELD_SIZE];
 
     public int getSize() {
+
         return FIELD_SIZE;
     }
 
@@ -37,10 +41,10 @@ public class Field {
     }
 
     private boolean checkPoint(final Point point) {
-        return checkCoord(point.x) && checkCoord(point.y);
+        return checkCoordinate(point.x) && checkCoordinate(point.y);
     }
 
-    private boolean checkCoord(final int coord) {
+    private boolean checkCoordinate(final int coord) {
         return coord >= MIN_COORD && coord < MAX_COORD;
     }
 
