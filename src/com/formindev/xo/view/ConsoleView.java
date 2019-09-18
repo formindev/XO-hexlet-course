@@ -79,24 +79,16 @@ public class ConsoleView {
     private void printRow(final Field field, final int row) throws InvalidPointException {
         for (int j = 0; j < field.getSize(); j++) {
             final Figure figure = field.getFigure(new Point(row, j));
+
             if (figure == Figure.O)
                 System.out.print("O");
+
             if (figure == Figure.X)
                 System.out.print("X");
+
             if (figure == null)
                 System.out.print(" ");
 
-//
-//            switch (figure) {
-//                case O:
-//                    System.out.print("O");
-//                    break;
-//                case X:
-//                    System.out.print("X");
-//                    break;
-//                case null:
-//                    System.out.print(" ");
-//            }
             if (j != 2)
                 System.out.print("|");
         }
