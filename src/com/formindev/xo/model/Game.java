@@ -1,6 +1,8 @@
 package com.formindev.xo.model;
 
-public class Game {
+import java.util.Iterator;
+
+public class Game implements Iterable<Player> {
 
     private final String name;
 
@@ -24,5 +26,25 @@ public class Game {
 
     public Field getField() {
         return field;
+    }
+
+    @Override
+    public Iterator<Player> iterator() {
+        return new PlayerIterator();
+    }
+
+    private class PlayerIterator implements Iterator<Player> {
+
+        private int index = 0;
+
+        @Override
+        public boolean hasNext() {
+            return Game.this.players.length > index;
+        }
+
+        @Override
+        public Player next() {
+            return Game.this.players[index++];
+        }
     }
 }
