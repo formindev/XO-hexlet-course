@@ -26,7 +26,7 @@ public class GameTest {
 
         final Game game = new Game(null, inputPlayers, null);
 
-        final Player[] actualPlayers= game.getPlayers();
+        final Player[] actualPlayers = game.getPlayers();
 
         assertArrayEquals(inputPlayers, actualPlayers);
 
@@ -42,5 +42,26 @@ public class GameTest {
         final Field actualField = game.getField();
 
         assertEquals(inputField, actualField);
+    }
+
+    @Test
+    public void checkPlayerIterator() {
+
+        final Player[] inputPlayers = new Player[] {new Player("Greg", Figure.O), new Player("Bob", Figure.X)};
+
+        final Game game = new Game(null, inputPlayers, null);
+
+        int i = 0;
+
+        for (Player player : game) {
+
+            final String actualPlayer = player.getName();
+
+            final String expectedPlayer = inputPlayers[i].getName();
+
+            assertEquals(expectedPlayer, actualPlayer);
+
+            i++;
+        }
     }
 }
