@@ -6,6 +6,7 @@ import com.formindev.xo.controller.WinnerController;
 import com.formindev.xo.model.Field;
 import com.formindev.xo.model.Figure;
 import com.formindev.xo.model.Game;
+import com.formindev.xo.model.Player;
 import com.formindev.xo.model.exceptions.AlreadyOccupiedException;
 import com.formindev.xo.model.exceptions.InvalidPointException;
 
@@ -22,8 +23,13 @@ public class ConsoleView {
     private final MoveController moveController = new MoveController();
 
     public void show(final Game game) throws InvalidPointException {
+        for (Player player : game) {
+            System.out.format("Player name: %s. Figure: %s.\n", player.getName(), player.getFigure());
+        }
+
         final Field field = game.getField();
         final int fieldSize = field.getSize();
+
         for (int i = 0; i < fieldSize; i++) {
              printRow(field, i);
              System.out.print("\n");
